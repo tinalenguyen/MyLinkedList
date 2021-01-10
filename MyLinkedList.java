@@ -2,8 +2,14 @@ public class MyLinkedList{
 
  private int size;
  private Node start,end;
- public MyLinkedList(){/*create a constructor*/}
- public int size();
+ public MyLinkedList(){
+    size = 0;
+
+ }
+ public int size(){
+    return size;
+
+ }
  public boolean add(String value);
  public void add(int index, String value);
  public String get(int index);
