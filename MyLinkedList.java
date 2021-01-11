@@ -126,7 +126,7 @@ public class MyLinkedList{
    }
 
    result += curr.getData();
-   return "[]" +result+ "]";
+   return "[" +result+ "]";
  }
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
