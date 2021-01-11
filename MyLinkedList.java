@@ -12,7 +12,7 @@ public class MyLinkedList{
 
  }
 
- private Node getIndex(int index){
+ private Node getVal(int index){
    if (index == 0) return start;
    if (index == size-1) return end;
    int counter = 0 ;
@@ -29,10 +29,8 @@ public class MyLinkedList{
     if (size==0){
       start = input;
       end = input;
-      size++;
 
     } else {
-      end = input;
       end.setNext(input);
       input.setPrev(end);
       end = input;
@@ -50,20 +48,27 @@ public class MyLinkedList{
 
    Node input = new Node(value);
 
-  if (size == 0 || index == size){
-    add(value);
+  if (size == 0){
+    end = input;
+    start = input;
   }else if (index == 0){
     //append to the beginning
     start.setPrev(input);
     input.setNext(start);
     start = input;
+  }else if (index == size){
+    end.setNext(input);
+    input.setPrev(end);
+    end = input;
+
   }else{
   Node prevv = new Node(get(index-1) );
   Node nextt = new Node(get(index) );
-  prevv.setNext(input);
-  nextt.setPrev(input);
   input.setNext( nextt );
   input.setPrev( prevv );
+  prevv.setNext(input);
+  nextt.setPrev(input);
+
 
   }
   size++;
@@ -73,16 +78,16 @@ public class MyLinkedList{
     if (index >= size || index < 0){
       throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
     }
-    return getIndex(index).getData();
+    return getVal(index).getData();
  }
 
  public String set(int index, String value){
    if (index >= size || index < 0){
      throw new IndexOutOfBoundsException("Index " +index+ " is out of bounds");
    }
-   Node prevv = getIndex(index-2) ;
-   Node nextt =getIndex(index+2) ;
-   Node current = getIndex(index) ;
+   Node prevv = getVal(index-1) ;
+   Node nextt = getVal(index+1) ;
+   Node current = getVal(index) ;
    Node val = new Node(value);
 
    if (index == 0) start.setPrev(val);
@@ -100,19 +105,14 @@ public class MyLinkedList{
 
  public String toString(){
    String result = "";
-
+   if (size==0) return "[]";
    Node curr = start;
 
-   while (curr != null){
-     if (curr !=start || curr != end){
+   while (curr.getNext() != null){
        result += curr.getData() + ", ";
-     }
-     else {
-       result += curr.getData();
-     }
-     curr = curr.getNext();
+       curr = curr.getNext();
    }
-   return "[" +result+"]";
+   return "[" +result+ curr.getData() + "]";
  }
 
  public String toStringReversed(){
