@@ -71,11 +71,29 @@ public class MyLinkedList{
     }
     return val.getData();
  }
- public String set(int index, String value){
 
-   return "";
+ public String set(int index, String value){
+   if (index >= size || index < 0){
+     throw new IndexOutOfBoundsException("Index " +index+ " is out of bounds");
+   }
+   Node prevv = new Node(get(index-2) );
+   Node nextt = new Node(get(index+2) );
+   Node current = new Node(get(index) );
+   Node val = new Node(value);
+
+   if (index == 0) start.setPrev(val);
+   if (index == size-1) end.setNext(val);
+   else {
+     prevv.setNext(val);
+     nextt.setPrev(val);
+
+   }
+  String old = current.getData();
+  current.setData(value);
+  return old;
 
  }
+
  public String toString(){
 
    return "";
