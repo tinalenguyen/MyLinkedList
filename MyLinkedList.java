@@ -4,8 +4,7 @@ public class MyLinkedList{
  private Node start,end;
  public MyLinkedList(){
     size = 0;
-    start = null;
-    end = null;
+
  }
 
  public int size(){
@@ -28,27 +27,59 @@ public class MyLinkedList{
       end = input;
 
     }
+    return true;
+ }
+
+ public void add(int index, String value){
+   if (index >size || index < 0){
+     throw new IndexOutOfBoundsException("Index " +index+" is out of bounds");
+   }
+
+   Node input = new Node(value);
+
+  if (size == 0 || index == size) add(value);
+  if (index == 0){
+    //append to the beginning
+    start.setPrev(input);
+    input.setNext(start);
+    start = input;
+  }else{
+  Node prevv = new Node(get(index-1) );
+  Node nextt = new Node(get(index+1) );
+  prevv.setNext(input);
+  nextt.setPrev(input);
+  input.setNext( nextt );
+  input.setPrev( prevv );
+
+  }
+
 
  }
- public void add(int index, String value);
 
  public String get(int index){
     if (index >= size || index < 0){
       throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
     }
 
-    if (index == 0) return start;
-    if (index == size-1) return end;
+    if (index == 0) return start.getData();
+    if (index == size-1) return end.getData();
 
     Node val = start;
     for (int i = 0; i < index; i++){
       val = val.getNext();
       i++;
     }
-    return val;
+    return val.getData();
  }
- public String set(int index, String value);
- public String toString();
+ public String set(int index, String value){
+
+   return "";
+
+ }
+ public String toString(){
+
+   return "";
+ }
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
 
