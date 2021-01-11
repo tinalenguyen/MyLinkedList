@@ -25,9 +25,15 @@ public class Node {
   public void setNext(Node value){
     next = value;
   }
-  
- private Node next,prev;
- //write get/set methods for all three instance variables.
 
+  //prev methods
+
+  public Node getPrev(){
+    return prev;
+  }
+
+  public void setPrev(Node value){
+    prev = value;
+  }
 
 }
