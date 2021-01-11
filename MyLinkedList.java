@@ -120,7 +120,7 @@ public class MyLinkedList{
 
    return "[" +result+ curr.getData() + "]";
  }
- 
+
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
   public String remove(int index){
