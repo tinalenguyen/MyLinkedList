@@ -107,8 +107,17 @@ public class MyLinkedList{
  }
 
  public String toStringReversed(){
-   return "";
+   String result = "";
 
+   Node curr = end;
+
+   for (int i = 0; i <size-1;i++){
+     result += curr.getData()+", ";
+     curr = curr.getPrev();
+   }
+
+   result += curr.getData();
+   return "[]" +result+ "]";
  }
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
