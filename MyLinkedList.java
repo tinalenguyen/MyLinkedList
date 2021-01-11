@@ -62,10 +62,10 @@ public class MyLinkedList{
     end = input;
 
   }else{
-  Node prevv = new Node(get(index-1) );
-  Node nextt = new Node(get(index) );
-  input.setNext( nextt );
+  Node prevv = getVal(index-1) ;
+  Node nextt = getVal(index) ;
   input.setPrev( prevv );
+  input.setNext( nextt );
   prevv.setNext(input);
   nextt.setPrev(input);
 
@@ -109,17 +109,18 @@ public class MyLinkedList{
 
  public String toStringReversed(){
    String result = "";
-
+   if (size==0) return "[]";
    Node curr = end;
 
-   for (int i = 0; i <size-1;i++){
-     result += curr.getData()+", ";
-     curr = curr.getPrev();
+   while (curr.getPrev() != null){
+      result += curr.getData() + ", ";
+      curr = curr.getPrev();
+
    }
 
-   result += curr.getData();
-   return "[" +result+ "]";
+   return "[" +result+ curr.getData() + "]";
  }
+ 
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
   public String remove(int index){
