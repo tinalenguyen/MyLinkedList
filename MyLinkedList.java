@@ -88,15 +88,7 @@ public class MyLinkedList{
    Node prevv = getVal(index-1) ;
    Node nextt = getVal(index+1) ;
    Node current = getVal(index) ;
-   Node val = new Node(value);
 
-   if (index == 0) start.setPrev(val);
-   if (index == size-1) end.setNext(val);
-   else {
-     prevv.setNext(val);
-     nextt.setPrev(val);
-
-   }
   String old = current.getData();
   current.setData(value);
   return old;
