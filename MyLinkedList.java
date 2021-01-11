@@ -95,8 +95,20 @@ public class MyLinkedList{
  }
 
  public String toString(){
+   String result = "";
 
+   Node curr = start;
+   for (int i = 0 ; i < size-1;i++){
+     result += curr.getData() + ", ";
+     curr = curr.getNext();
+   }
+   result += curr.getData();
+   return "[" +result+"]";
+ }
+
+ public String toStringReversed(){
    return "";
+
  }
  //Any helper method that returns a Node object MUST BE PRIVATE!
 
