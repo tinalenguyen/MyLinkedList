@@ -163,6 +163,14 @@ public class MyLinkedList{
       return before;
   }
 
+  public void extend(MyLinkedList other){
+      size = size + other.size;
+      end.setNext(other.start);
+      other.start.setPrev(end);
+      other.end = null;
+      other.start = null;
+      other.size = 0;
 
+  }
 
 }
