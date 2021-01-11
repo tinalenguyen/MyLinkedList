@@ -14,6 +14,7 @@ public class MyLinkedList{
  }
 
  public boolean add(String value){
+  //appends to the end of the linkedlist
    Node input = new Node(value);
     if (size==0){
       start = input;
@@ -21,6 +22,10 @@ public class MyLinkedList{
       size++;
 
     } else {
+      end = input;
+      end.setNext(input);
+      input.setPrev(end);
+      end = input;
 
     }
 
