@@ -16,7 +16,16 @@ public class Node {
    data = value;
  }
 
+//next methods
 
+  public Node getNext(){
+    return next;
+  }
+
+  public void setNext(Node value){
+    next = value;
+  }
+  
  private Node next,prev;
  //write get/set methods for all three instance variables.
 
