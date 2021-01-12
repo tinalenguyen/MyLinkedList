@@ -130,8 +130,7 @@ public class MyLinkedList{
       throw new IndexOutOfBoundsException("Index " +index+ " is out of bounds");
     } else if (size == 1){
       before = start.getData();
-      start = null;
-      end = null;
+      end = start = null;
     } else if (index == 0){
       before = start.getData();
       Node nextt = start.getNext();
@@ -143,12 +142,12 @@ public class MyLinkedList{
       end = end.getPrev();
       end.setNext(null);
     } else {
-      Node oldie = new Node(get(index));
+      Node oldie = getVal(index);
       before = oldie.getData();
       oldie.getPrev().setNext(oldie.getNext());
+
       oldie.getNext().setPrev(oldie.getPrev());
-      oldie.setNext(null);
-      oldie.setPrev(null);
+
 
     }
 
@@ -157,9 +156,19 @@ public class MyLinkedList{
   }
 
   public void extend(MyLinkedList other){
+    if (this.size == 0){
+      this.end = other.end;
+      this.start = other.start;
+
+
+    } else {
+      this.end.setNext(other.start);
+      other.start.setPrev(this.end);
+      this.end = other.end;
+
+    }
+
       size = size + other.size;
-      end.setNext(other.start);
-      other.start.setPrev(end);
       other.end = null;
       other.start = null;
       other.size = 0;
